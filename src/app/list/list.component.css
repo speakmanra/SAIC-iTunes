@@ -1,0 +1,23 @@
+button {
+  margin-left: 20px;
+  height: 60%;
+  background-color: gainsboro;
+}
+
+table {
+  width: 75%;
+  margin: 50px auto;
+}
+
+.search-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}

@@ -1,0 +1,35 @@
+<div class="search-field">
+  <mat-form-field>
+    <input matInput [(ngModel)]="searchQuery" placeholder="Song.." />
+  </mat-form-field>
+  <button mat-raised-button (click)="searchItunes(searchQuery)" type="button">
+    Find Music
+  </button>
+</div>
+
+<div class="spinner" *ngIf="isLoading"><mat-spinner></mat-spinner></div>
+
+<div *ngIf="resultsReturned && !isLoading">
+  <table mat-table [dataSource]="songs" class="mat-elevation-z8">
+    <!-- Artist Column -->
+    <ng-container matColumnDef="artist">
+      <th mat-header-cell *matHeaderCellDef>Artist</th>
+      <td mat-cell *matCellDef="let song">{{ song.artistName }}</td>
+    </ng-container>
+
+    <!-- Song Column -->
+    <ng-container matColumnDef="song">
+      <th mat-header-cell *matHeaderCellDef>Song</th>
+      <td mat-cell *matCellDef="let song">{{ song.trackName }}</td>
+    </ng-container>
+
+    <!-- Album Column -->
+    <ng-container matColumnDef="album">
+      <th mat-header-cell *matHeaderCellDef>Album</th>
+      <td mat-cell *matCellDef="let song">{{ song.collectionName }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
